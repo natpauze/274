@@ -42,13 +42,13 @@ PrintString:
     stw r2, 0(sp)
     mov r3, r2
 ps_loop:
-	ldb r2, 0(r3)
+    ldb r2, 0(r3)
     beq r2, r0, end_ps_loop
     call PrintChar
     addi r3, r3, 1
     br ps_loop
 end_ps_loop:
-	ldw ra, 8(sp)
+    ldw ra, 8(sp)
     ldw r3, 4(sp)
     ldw r2, 0(sp)
     addi sp, sp, 12
@@ -63,14 +63,14 @@ PrintHexDigit:
     movi r4, 9
     mov r3, r2
 IF:
-	ldw r2, 0(r3)
-	bgt r2, r4, ELSE
+    ldw r2, 0(r3)
+    bgt r2, r4, ELSE
 THEN:
     addi r2, r2, '0'
     br END_IF
 ELSE:
-	subi r2, r2, 10
-	addi r2, r2, 'A'
+    subi r2, r2, 10
+    addi r2, r2, 'A'
 END_IF:
     call PrintChar
     ldw ra, 12(sp)
@@ -103,16 +103,16 @@ end_psh_loop:
     ret
 	
  
-		.org	0x1000
+	.org	0x1000
         
 # place word-sized data first to maintain word alignemnt
-    LIST: .word 1, 10, 2, 12, 3, 13
-    N: .word 6
+	LIST: .word 1, 10, 2, 12, 3, 13
+	N: .word 6
 # place byte sized data and strings after word sized data
 
-MSG:	.asciz	"ELEC274 Lab2\n"
+    	MSG: .asciz "ELEC274 Lab2\n"
 
-		.end
+	.end
     
     
 	
